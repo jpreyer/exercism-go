@@ -40,7 +40,7 @@ func Score(w string) int {
 		//convert word to upper case and Iterate over letters in work
 		wordSplit := strings.Split(strings.ToUpper(w), "")
 		for i := 0; i < len(wordSplit); i++ {
-			wordScore = wordScore + values[string(wordSplit[i])]
+			wordScore += values[string(wordSplit[i])]
 		}
 	}
 
