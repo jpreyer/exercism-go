@@ -2,6 +2,7 @@ package scrabble
 
 import "strings"
 
+//Score takes a word as input and returns the Scrabble score for the word.
 func Score(w string) int {
 	var wordScore int
 	values := map[string]int{
