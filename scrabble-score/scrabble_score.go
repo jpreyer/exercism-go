@@ -37,10 +37,9 @@ func Score(w string) int {
 
 	//convert word to upper case and Iterate over letters in work
 	w = strings.ToUpper(w)
-	//Convert w to an array of runes
-	r := []rune(w)
 	//Iterate over rune array to compile score
-	for _, v := range r {
+	for _, v := range w {
+		//Protip: r is a rune!!!!
 		wordScore += values[v]
 	}
 
