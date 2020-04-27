@@ -6,6 +6,7 @@ func echo(s []string) []string {
 func capitolize(s []string) []string {
 }
 
-func main() {
+//Accumulate comments
+func Accumulate() {
 
 }
