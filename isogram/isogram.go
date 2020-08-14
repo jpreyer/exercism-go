@@ -1,7 +1,6 @@
 package isogram
 
 import (
-	"regexp"
 	"strings"
 )
 
@@ -13,10 +12,8 @@ func IsIsogram(w string) bool {
 
 	// Let's remove spaces and dashes, we don't care about multiple occurances of them
 	w = strings.ToLower(w)
-	re := regexp.MustCompile(`[-]`)
-	w = re.ReplaceAllString(w, "")
-	re1 := regexp.MustCompile(`[ ]+`)
-	w = re1.ReplaceAllString(w, "")
+	w = strings.ReplaceAll(w, "-", "")
+	w = strings.ReplaceAll(w, " ", "")
 
 	status = true
 	// Clever way to test if a key is in a map, review!!!
