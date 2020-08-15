@@ -8,7 +8,7 @@ import (
 func IsIsogram(w string) bool {
 
 	var status bool
-	var track_usage = map[rune]int{}
+	track_usage := make(map[rune]bool)
 
 	// Let's remove spaces and dashes, we don't care about multiple occurances of them
 	w = strings.ToLower(w)
@@ -20,7 +20,7 @@ func IsIsogram(w string) bool {
 	//From https://www.golangprograms.com/how-to-check-if-a-map-contains-a-key-in-go.html
 	for _, v := range w {
 		if _, ok := track_usage[v]; !ok {
-			track_usage[v] += 1
+			track_usage[v] = true
 		} else {
 			status = false
 		}
