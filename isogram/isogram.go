@@ -19,8 +19,7 @@ func IsIsogram(w string) bool {
 	// Clever way to test if a key is in a map, review!!!
 	//From https://www.golangprograms.com/how-to-check-if-a-map-contains-a-key-in-go.html
 	for _, v := range w {
-		_, ok := track_usage[v]
-		if !ok {
+		if _, ok := track_usage[v]; !ok {
 			track_usage[v] += 1
 		} else {
 			status = false
