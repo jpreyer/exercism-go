@@ -34,7 +34,14 @@ func (i IntList) Length() int {
 	return count
 }
 
-func Map() {}
+func (i IntList) Map(f unaryFunc) IntList {
+	ol := i
+	nl := []int{}
+	for _, v := range ol {
+		nl = append(nl, f(v))
+	}
+	return nl
+}
 
 func (i IntList) Reverse() IntList {
 	l := i.Length()
