@@ -5,13 +5,13 @@ import (
 	"unicode"
 )
 
-//Compute_Digit_Values takes a slice of int at input and returns a slice of integers that have been
+//ComputeDigitValues takes a slice of int at input and returns a slice of integers that have been
 //processed by the Lutn algorithm.
 //The first step of the Luhn algorithm is to double every second digit, starting from the right.
 //If doubling the number results in a number greater than 9 then subtract 9 from the product.
 //Note: The digits we are computiung the checksum for much already be reversed!
 //We then sum up the digit values and return the sum
-func Compute_Digit_Values(digits []int) int {
+func ComputeDigitValues(digits []int) int {
 	total := 0
 	i := len(digits) % 2
 	for i <= len(digits)-1 {
@@ -48,7 +48,7 @@ func Valid(s string) bool {
 			return false
 		}
 	}
-	sum := Compute_Digit_Values(x)
+	sum := ComputeDigitValues(x)
 	return sum%10 == 0
 
 }
