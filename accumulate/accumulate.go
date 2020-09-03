@@ -1,12 +1,9 @@
 package accumulate
 
-func echo(s []string) []string {
-}
-
-func capitolize(s []string) []string {
-}
-
-//Accumulate comments
-func Accumulate() {
-
+func Accumulate(sl []string, operator func(string) string) []string {
+	nl := []string{}
+	for _, v := range sl {
+		nl = append(nl, operator(v))
+	}
+	return nl
 }
