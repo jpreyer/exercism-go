@@ -7,13 +7,33 @@ type (
 	predFunc  func(int) bool
 )
 
-//var (
-//	list IntList
-//)
+func (i IntList) Foldl(bf binFunc, x int) int {
+	ol := i
+	if len(ol) == 0 {
+		return x
+	}
 
-func Foldr() {}
+	// "peel" the first list element off and start with it
+	holder := bf(ol[0], x)
+	for _, v := range ol[1:] {
+		holder = bf(holder, v)
+	}
+	return holder
+}
 
-func Foldl() {}
+func (i IntList) Foldr(bf binFunc, x int) int {
+	ol := i.Reverse()
+	if len(ol) == 0 {
+		return x
+	}
+
+	// "peel" the first list element off and start with it
+	holder := bf(ol[0], x)
+	for _, v := range ol[1:] {
+		holder = bf(v, holder)
+	}
+	return holder
+}
 
 func (i IntList) Filter(f predFunc) IntList {
 	ol := i
@@ -36,17 +56,16 @@ func (i IntList) Length() int {
 
 func (i IntList) Map(f unaryFunc) IntList {
 	ol := i
-	nl := []int{}
-	for _, v := range ol {
-		nl = append(nl, f(v))
+	nl := make(IntList, i.Length())
+	for j, v := range ol {
+		nl[j] = f(v)
 	}
 	return nl
 }
 
 func (i IntList) Reverse() IntList {
 	l := i.Length()
-	//better: t := make(IntList, l)
-	var t IntList
+	t := make(IntList, l)
 	for index, v := range i {
 		t[l-1-index] = v
 	}
