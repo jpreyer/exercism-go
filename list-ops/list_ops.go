@@ -15,7 +15,16 @@ func Foldr() {}
 
 func Foldl() {}
 
-func Filter() {}
+func (i IntList) Filter(f predFunc) IntList {
+	ol := i
+	nl := []int{}
+	for _, v := range ol {
+		if f(v) {
+			nl = append(nl, v)
+		}
+	}
+	return nl
+}
 
 func (i IntList) Length() int {
 	count := 0
@@ -52,5 +61,10 @@ func (i IntList) Append(l IntList) IntList {
 }
 
 func (i IntList) Concat(list []IntList) IntList {
+	nl := i
+	for _, v := range list {
+		nl = append(nl, v...)
+	}
+	return nl
 
 }
