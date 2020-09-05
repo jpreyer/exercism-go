@@ -9,8 +9,6 @@ import (
 //processed by the Lutn algorithm.
 //The first step of the Luhn algorithm is to double every second digit, starting from the right.
 //If doubling the number results in a number greater than 9 then subtract 9 from the product.
-//Note: The digits we are computiung the checksum for much already be reversed!
-//We then sum up the digit values and return the sum
 func ComputeDigitValue(digit int) int {
 	digit *= 2
 	if digit > 9 {
