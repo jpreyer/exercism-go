@@ -24,23 +24,32 @@ func ComputeDigitValue(digit int) int {
 func Valid(s string) bool {
 	total := 0
 	s = strings.ReplaceAll(s, " ", "")
-	l := len(s)
 
-	if l < 2 {
+	if len(s) < 2 {
 		return false
 	}
 
-	for index, v := range s {
-		if unicode.IsDigit(v) {
-			d := int(v - '0')
-			if (l%2 == 1 && index%2 == 1) || (l%2 == 0 && index%2 == 0) {
-				total += ComputeDigitValue(d)
-			} else {
-				total += d
-			}
-		} else {
+	//Is the digit we're working on one that should be given to ComputeDigitValue?  At the start, no it is not
+	SecondDigit := false
+	//Convert input string to an array of Runes
+	RuneString := []rune(s)
+
+	for j := len(s) - 1; j >= 0; j-- {
+
+		if !unicode.IsDigit(RuneString[j]) {
 			return false
 		}
+
+		d := int(RuneString[j] - '0')
+
+		if SecondDigit {
+			total += ComputeDigitValue(d)
+		} else {
+			total += d
+		}
+		//moving to next digit, so flip if this is now SecondDigit
+		SecondDigit = !SecondDigit
+
 	}
 
 	return total%10 == 0
