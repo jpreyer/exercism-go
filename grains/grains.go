@@ -4,12 +4,12 @@ import "errors"
 
 //Square takes an integer n an input and outputs the number of grains on that square: 2^(n-1)
 func Square(n int) (uint64, error) {
-	SquareTotal := uint64(1)
+
 	if n > 64 || n <= 0 {
 		return uint64(0), errors.New("false")
 	}
-	SquareTotal = SquareTotal << (n - 1)
-	return SquareTotal, nil
+
+	return 1 << (n - 1), nil
 }
 
 //Total returns the total grains on a 8x8 chess board
