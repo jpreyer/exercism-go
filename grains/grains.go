@@ -8,9 +8,7 @@ func Square(n int) (uint64, error) {
 	if n > 64 || n <= 0 {
 		return uint64(0), errors.New("false")
 	}
-	for i := 2; i <= n; i++ {
-		SquareTotal *= 2
-	}
+	SquareTotal = SquareTotal << (n - 1)
 	return SquareTotal, nil
 }
 
