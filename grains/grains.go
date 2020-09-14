@@ -16,6 +16,6 @@ func Total() uint64 {
 	// 2 + 2^1 + 2^2 + 2^3 + ...... + 2^64 is a geometric series!
 	// We can find the sum of this by calculating [1 * (1 - 2^64)] / [1 - 2] = [1 - 2^64] / -1 = 2^64 -1
 
-	return (1 << 64) - 1
+	return 1<<64 - 1
 
 }
